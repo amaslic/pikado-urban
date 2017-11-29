@@ -17,36 +17,36 @@
         <tbody>
           
             @foreach ($match as $i) 
-            <form action="{{ route('addpoints') }}" method="post" id="{{ $loop->iteration }}">
+            <form action="{{ route('addpoints') }}" method="post" id="{{ $i->id }}">
             {{ csrf_field() }}
                 <tr>
                 
                 <th scope="row">
                     {{ $loop->iteration }}
-                    <input name="match_id" value="{{ $i->id }}" type="hidden" />
+                    <input name="m_id" value="{{ $i->id }}" type="hidden" />
                 </th>
 
                     <td>
-                        <input name="p1" value="{{ $i->player1 }}" type="hidden" />
-                        <input name="p1_id" value="{{ $i->player1_id }}" type="hidden" />
+                        <input name="p1{{ $i->id }}" value="{{ $i->player1 }}" type="hidden" />
+                        <input name="p1_id{{ $i->id }}" value="{{ $i->player1_id }}" type="hidden" />
                         {{ $i->player1 }}
                     </td>
                     <td>
                         
-                        <input name="points1" />
+                        <input name="points1{{ $i->id }}" />
                     </td>
                     <td>
-                        <input name="p2" value="{{ $i->player2 }}" type="hidden" />
-                         <input name="p2_id" value="{{ $i->player2_id }}" type="hidden" />
+                        <input name="p2{{ $i->id }}" value="{{ $i->player2 }}" type="hidden" />
+                         <input name="p2_id{{ $i->id }}" value="{{ $i->player2_id }}" type="hidden" />
                         {{ $i->player2 }}
                     </td>
                     <td>
 
-                        <input name="points2" />
+                        <input name="points2{{ $i->id }}" />
                     </td>
                     <td>
-                        <button onclick="$('#{{ $loop->iteration }}').submit();">Dodjeli poene</button>
-                        <input type="submit" value="Test" />
+                        <button onClick="$('#{{$i->id}}').submit()">Dodjeli poene</button>
+                        
                     </td>
                 </tr>
              </form>

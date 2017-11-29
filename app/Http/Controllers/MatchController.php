@@ -44,19 +44,31 @@ class MatchController extends Controller
     }
 
     public function addPoints(){
-      
-      
-            $match = Match::find(Input::get('match_id'));
-            $match->player1_points = Input::get('points1');
-            $match->player2_points = Input::get('points2');
+            
+      /*  $t = Input::get('points1'.Input::get('m_id'));
+        $t1 = Input::get('points2'.Input::get('m_id'));
+        $t2 = Input::get('p1_id'.Input::get('m_id'));
+        $t3 = Input::get('points1'.Input::get('m_id'));
+        $t4 = Input::get('p2_id'.Input::get('m_id'));
+        $t5 = Input::get('points2'.Input::get('m_id')); */
+
+        $t = Input::get('points11');
+        $t1 = Input::get('points21');
+        $t2 = Input::get('p1_id1');
+        $t3 = Input::get('points11');
+        $t4 = Input::get('p2_id1');
+        $t5 = Input::get('points21');
+            $match = Match::find(Input::get('m_id'));
+            $match->player1_points = $t;
+            $match->player2_points = $t1;
             $match->save();
 
-            $player = Player::find(Input::get('p1_id'));
-            $player->points = Input::get('points1');
+            $player = Player::find($t2);
+            $player->points = $t3;
             $player->save();
 
-            $player = Player::find(Input::get('p2_id'));
-            $player->points = Input::get('points2');
+            $player = Player::find($t4);
+            $player->points = $t5;
             $player->save();
 
             session()->flash('msg', '<div class="alert alert-success"> Meč uspjesno azuriran! </div>');
