@@ -24,3 +24,6 @@ Route::post('/addnews', 'NewsController@index')->name('addnews');
 Route::get('/news', 'NewsController@index')->name('news');
 Route::post('/addplayer', 'PlayerController@addPlayer')->name('addplayer');
 Route::post('/addpoints', 'MatchController@addPoints')->name('addpoints');
+Route::post('/addmatch', 'MatchController@addMatch')->name('addmatch');
+Route::get('/getmatches', 'MatchController@getMatches')->name('getmatches');
+Route::get('/publicmatches', 'MatchController@getMatchesPublic')->name('publicmatches');

@@ -84,8 +84,8 @@
 
                 <div class="links">
                     <a href="{{ route('table') }}">Tabela</a>
-                    <a href="https://laracasts.com">Mečevi</a>
-                    <a href="https://laravel-news.com">Vijesti</a>
+                    <a href="{{ route('publicmatches') }}">Mečevi</a>
+                   <!-- <a href="https://laravel-news.com">Vijesti</a>-->
                 </div>
             </div>
         </div>

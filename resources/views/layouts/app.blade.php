@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
     <div id="app">
@@ -60,6 +61,11 @@
                                     <li>
                                         <a href="{{ route('newmatch') }}">
                                             Novi meč
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="{{ route('getmatches') }}">
+                                            Lista mečeva
                                         </a>
                                     </li>
                                     <li>

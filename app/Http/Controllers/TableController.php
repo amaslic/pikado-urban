@@ -1,9 +1,9 @@
 <?php
 
-namespace Laravel\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Laravel\Player;
+use App\Player;
 
 class TableController extends Controller
 {

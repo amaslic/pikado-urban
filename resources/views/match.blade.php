@@ -11,8 +11,9 @@
 
         <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
-        <form action="{{ route('addpoints') }}" method="post">
-        <select class="selectpicker" name="player1">
+        <form action="{{ route('addmatch') }}" method="post">
+        {{ csrf_field() }}
+        <select class="selectpicker" name="name1" id="p1pick">
             <option disabled selected>Izaberite igrača 1</option>
             <optgroup label="Igrač">
             
@@ -21,7 +22,7 @@
                 @endforeach
             </optgroup>
         </select>
-        <select class="selectpicker" name="player2">
+        <select class="selectpicker" name="name2" id="p2pick">
             <option disabled selected>Izaberite igrača 2</option>
             <optgroup label="Igrač">
             
@@ -30,8 +31,9 @@
                 @endforeach
             </optgroup>
         </select>
-      <!--  <input type="text" value="" name="points1" placeholder="Igrač 1 broj poena"/>
-        <input type="text" value="" name="points2" placeholder="Igrač 2 broj poena"/>-->
+        <input id="p1" value="" name="p1" type="hidden" />
+    
+        <input id="p2" value="" name="p2" type="hidden" />
         <button>Dodaj meč</button>
         </form>
         </div>
@@ -40,7 +42,24 @@
         </div>
 
 
-        
+             {!! Session::has('msg') ? Session::get("msg") : '' !!}
     </div>
 </div>
+
+
+<script>
+     $(document).on("change", "#p1pick", function() {
+
+     $("#p1").val( $("#p1pick :selected").text() ); 
+  
+
+  }).val( $('#p1').val() ).change();
+   $(document).on("change", "#p2pick", function() {
+
+     $("#p2").val( $("#p2pick :selected").text() ); 
+
+  }).val( $('#p2').val() ).change();
+</script>
+
+
 @endsection
