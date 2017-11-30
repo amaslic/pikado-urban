@@ -8,7 +8,9 @@
             <tr>
             <th>#</th>
             <th>Igrač 1</th>
+            <th>Igrač 1 poena</th>
             <th></th>
+            <th>Igrač 2 poena</th>
             <th>Igrač 2</th>
 
           
@@ -28,9 +30,17 @@
                         
                         {{ $i->player1 }}
                     </td>
+                     <td>
+                        
+                        {{ $i->player1_points }}
+                    </td>
                     <td>
                         
                     
+                    </td>
+                     <td>
+                        
+                        {{ $i->player2_points }}
                     </td>
                     <td>{{ $i->player2 }}</td>
              

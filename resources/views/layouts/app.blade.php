@@ -74,6 +74,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="{{ route('publicmatches') }}">
+                                            Rezultati
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('addnews') }}">
                                             Novo obavještenje
                                         </a>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Player;
 use App\Match;
 use Illuminate\Support\Facades\Input;
+use DB;
 
 class MatchController extends Controller
 {
@@ -32,48 +33,49 @@ class MatchController extends Controller
     }
 
     public function getMatches(){
-        $match = Match::get();
-        
-          return view('matches', ['match' => $match]);
+        $match = DB::table('matches')
+        ->orderBy('id', 'desc')
+        ->get();
+        $players = Player::get();
+          return view('matches', ['match' => $match, 'players' => $players]);
     }
 
     public function getMatchesPublic(){
-        $match = Match::get();
-        
+        $match =  DB::table('matches')
+        ->orderBy('id', 'desc')
+        ->get();
+       
           return view('publicmatches', ['match' => $match]);
     }
 
     public function addPoints(){
             
-      /*  $t = Input::get('points1'.Input::get('m_id'));
-        $t1 = Input::get('points2'.Input::get('m_id'));
-        $t2 = Input::get('p1_id'.Input::get('m_id'));
-        $t3 = Input::get('points1'.Input::get('m_id'));
-        $t4 = Input::get('p2_id'.Input::get('m_id'));
-        $t5 = Input::get('points2'.Input::get('m_id')); */
 
-        $t = Input::get('points11');
-        $t1 = Input::get('points21');
-        $t2 = Input::get('p1_id1');
-        $t3 = Input::get('points11');
-        $t4 = Input::get('p2_id1');
-        $t5 = Input::get('points21');
-            $match = Match::find(Input::get('m_id'));
-            $match->player1_points = $t;
-            $match->player2_points = $t1;
+            $id =  Input::get('m_id');
+            $p1_id =  Input::get('p1_id');
+            $p2_id =  Input::get('p2_id');
+            $points1 =  Input::get('points1');
+            $points2 =  Input::get('points2');
+     
+
+           
+
+            $match = Match::find($id);
+            $match->player1_points = $points1;
+            $match->player2_points = $points2;
             $match->save();
 
-            $player = Player::find($t2);
-            $player->points = $t3;
+            $player = Player::find($p1_id);
+            $player->points = $player->points+$points1;
             $player->save();
 
-            $player = Player::find($t4);
-            $player->points = $t5;
-            $player->save();
+            $player1 = Player::find($p2_id);
+            $player1->points = $player1->points+$points2;
+            $player1->save();
 
             session()->flash('msg', '<div class="alert alert-success"> Meč uspjesno azuriran! </div>');
 
-            return back();
+            return redirect()->back();
    
     }
 }
